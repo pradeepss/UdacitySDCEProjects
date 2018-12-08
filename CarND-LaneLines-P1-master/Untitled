@@ -1,0 +1,11 @@
+#importing some useful packages
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import numpy as np
+import cv2
+import math
+
+# Import everything needed to edit/save/watch video clips
+from moviepy.editor import VideoFileClip
+from IPython.display import HTML
+%matplotlib inline
