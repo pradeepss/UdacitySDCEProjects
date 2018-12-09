@@ -103,14 +103,11 @@ def weighted_img(img, initial_img, α=0.8, β=1., γ=0.1):
     """
     return cv2.addWeighted(initial_img, α, img, β, γ)
 
-def pipeline(frames):
-    
-    is_videoclip = len(frames) > 0
-    
-    
+def pipeline(frames): 
     for x in range(0, len(frames)):
         gray = grayscale(frames[x])
         blur = gaussian_blur(gray,kernel_size=7)
+        print(blur)
         low_threshold = 50
         high_threshold = 150
         edge = canny(blur,low_threshold,high_threshold)
@@ -124,7 +121,6 @@ def pipeline(frames):
         max_line_gap = 250   # maximum gap in pixels between connectable line segments
         line_image = np.copy(frames[x])*0 # creating a blank to draw lines on
         lines = hough_lines(masked, rho, theta, threshold, min_line_length, max_line_gap)
-        lines = frames[-1] if is_videoclip else frames[0]
         result = weighted_img(lines, frames[x])
         
         return result
@@ -132,7 +128,6 @@ def pipeline(frames):
     
 def video_pipeline(frames):
     
-    print(len(frames))
     for x in range(0, len(frames)):
         gray = grayscale(frames[x])
         blur = gaussian_blur(gray,kernel_size=7)

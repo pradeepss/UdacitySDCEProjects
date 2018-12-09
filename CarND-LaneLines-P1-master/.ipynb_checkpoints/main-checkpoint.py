@@ -38,7 +38,7 @@ for vdeo in test_video:
             color_frame = cv2.cvtColor(color_frame, cv2.COLOR_BGR2RGB)
             color_frame = cv2.resize(color_frame, (resize_w, resize_h))
             frame_buffer.append(color_frame)
-            blend_frame = video_pipeline(frames=frame_buffer)
+            blend_frame = pipeline(frames=frame_buffer)
             out.write(cv2.cvtColor(blend_frame, cv2.COLOR_RGB2BGR))
             cv2.imshow('blend', cv2.cvtColor(blend_frame, cv2.COLOR_RGB2BGR)), cv2.waitKey(1)
         else:
