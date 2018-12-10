@@ -3,7 +3,9 @@ from os.path import join, basename
 from collections import deque
 
 resize_h, resize_w = 540, 960
-
+# reset global state of average values
+avgLeft = (0, 0, 0, 0)
+avgRight = (0, 0, 0, 0)
 
 # test on images
 images_dir = 'test_images'
